@@ -45,7 +45,7 @@
               <td>${producto.idProducto}</td>
               <td>${producto.nombre}</td>
               <td>${producto.precioNormal}</td>
-              <td><a href="Controller?operacion=aniadirProducto&idProducto=${producto.idProducto}"><img src="img/tobasket_button.gif" alt="" /></a></td>
+              <td><a href="controller?operacion=aniadirProducto&idProducto=${producto.idProducto}"><img src="img/tobasket_button.gif" alt="" /></a></td>
             </tr>
             </c:forEach>
           </tbody>
@@ -83,7 +83,7 @@
            </c:forEach>
            </tbody>
            </table>
-           <a href="Controller?operacion=mostrarFormularioPedido" class="text-center p-3">Formalizar pedido</a>
+           <a href="controller?operacion=mostrarFormularioPedido" class="text-center p-3">Formalizar pedido</a>
         </c:if>
       </div>
     </main>

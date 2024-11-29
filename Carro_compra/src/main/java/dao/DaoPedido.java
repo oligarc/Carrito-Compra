@@ -21,7 +21,7 @@ public class DaoPedido {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String query2 ="SELECT S_PEDIDO.NEXTVAL NUMERO FROM DUAL"; //Esto te devuelve el número que vayas a insertar antes de generarlo
-		String query = "INSERT INTO PEDIDO VALUES (S_PEDIDO.NEXTVAL,?,PENDIENTE,S,?,?";
+		
 		int idPedido=0;
 		
 		try {
@@ -36,11 +36,16 @@ public class DaoPedido {
 				idPedido = rs.getInt("NUMERO");
 			}
 			
+			ps.close();
+			
+			String query = "INSERT INTO PEDIDO VALUES (S_PEDIDO.NEXTVAL,?,PENDIENTE,S,?,?)";
 			java.sql.Timestamp fechaActual = new java.sql.Timestamp(System.currentTimeMillis());
 			ps = con.prepareStatement(query);
 			ps.setInt(1, p.getIdCliente());
 			ps.setTimestamp(2, fechaActual);
 			ps.setString(3, p.getDireccionEnvio());
+			ps.executeUpdate();
+			System.out.println(p.toString());
 			con.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

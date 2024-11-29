@@ -7,7 +7,7 @@
 <body>
 
 	<script type="text/javascript">
-		window.location = "Controller?operacion=iniciar"
+		window.location = "controller?operacion=iniciar"
 	</script>
 
 </body>

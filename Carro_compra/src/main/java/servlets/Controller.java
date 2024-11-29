@@ -22,6 +22,7 @@ import entidades.ProductoCarro;
 /**
  * Servlet implementation class Controller
  */
+@WebServlet("/controller")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,7 +43,6 @@ public class Controller extends HttpServlet {
 		HttpSession session = request.getSession();
 		DaoProducto daoProducto = new DaoProducto();
 		DaoPedido daoPedido = new DaoPedido();
-		DaoDetallePedido daoDetallePedido = new DaoDetallePedido();
 		
 		switch (operacion) {
 		
@@ -110,7 +110,6 @@ public class Controller extends HttpServlet {
 			}
 			
 			request.getRequestDispatcher("pedidoconfirmado.jsp").forward(request, response);
-			
 			
 			break;
 		}

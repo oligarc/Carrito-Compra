@@ -32,7 +32,7 @@
     
     <div class="container my-5">
     <h2 class="text-center mb-4">INTRODUZCA SU IDENTIFICADOR DE CLIENTE Y LA DIRECCIÓN DE ENVÍO</h2>
-    <form action="Controller?operacion=realizarPedido" method="post" class="p-4 border rounded shadow-sm">
+    <form action="controller?operacion=realizarPedido" method="post" class="p-4 border rounded shadow-sm">
         <div class="mb-3">
             <label for="idCliente" class="form-label">ID CLIENTE</label>
             <input type="number" id="idCliente" name="idCliente" class="form-control" placeholder="Introduce tu ID de cliente" required>

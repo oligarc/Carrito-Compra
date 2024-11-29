@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Pedido Confirmado</title>
 </head>
 <body>
+
+<h2>Te la marcaste kabro compraste</h2>
 
 </body>
 </html>

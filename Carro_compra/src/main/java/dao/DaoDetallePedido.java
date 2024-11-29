@@ -28,6 +28,7 @@ public class DaoDetallePedido {
 			ps.setInt(2, dp.getIdProducto());
 			ps.setInt(3, dp.getCantidad());
 			ps.setInt(4, dp.getPrecioUnitario());
+			ps.executeUpdate();
 			con.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
