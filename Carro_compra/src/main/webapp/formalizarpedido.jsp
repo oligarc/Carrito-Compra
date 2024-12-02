@@ -19,6 +19,18 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    
+    <script>
+      // Función para validar el ID del cliente
+      function validarFormulario() {
+        var idCliente = document.getElementById("idCliente").value;
+        if (isNaN(idCliente) || idCliente.trim() === "") {
+          alert("El identificador del cliente debe ser un número válido.");
+          return false; // Evita el envío del formulario
+        }
+        return true;
+      }
+    </script>
   </head>
 <body>
 
@@ -32,6 +44,11 @@
     
     <div class="container my-5">
     <h2 class="text-center mb-4">INTRODUZCA SU IDENTIFICADOR DE CLIENTE Y LA DIRECCIÓN DE ENVÍO</h2>
+    <c:if test="${not empty error}">
+            <div class="alert alert-danger" role="alert">
+                ${error}
+            </div>
+        </c:if>
     <form action="controller?operacion=realizarPedido" method="post" class="p-4 border rounded shadow-sm">
         <div class="mb-3">
             <label for="idCliente" class="form-label">ID CLIENTE</label>

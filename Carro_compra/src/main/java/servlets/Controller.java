@@ -10,10 +10,12 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import dao.DaoCliente;
 import dao.DaoDetallePedido;
 import dao.DaoPedido;
 import dao.DaoProducto;
 import entidades.CarroCompra;
+import entidades.Cliente;
 import entidades.DetallePedido;
 import entidades.Pedido;
 import entidades.Producto;
@@ -43,6 +45,7 @@ public class Controller extends HttpServlet {
         HttpSession session = request.getSession();
         DaoProducto daoProducto = new DaoProducto();
         DaoPedido daoPedido = new DaoPedido();
+        DaoCliente daoCliente = new DaoCliente();
 
         switch (operacion) {
 
@@ -147,33 +150,43 @@ public class Controller extends HttpServlet {
                 int idCliente = Integer.parseInt(request.getParameter("idCliente"));
                 String direccion = request.getParameter("direccion");
 
+                
+                Cliente cliente = daoCliente.obtenerClientePorID(idCliente);
+                
+                // Verificar si el cliente no existe
+                if(cliente.getIdCliente() == 0) {
+                    request.setAttribute("error", "El cliente con el identificador proporcionado no existe.");
+                    request.getRequestDispatcher("formalizarpedido.jsp").forward(request, response);
+                    return;
+                }
+
                 // Obtener el carrito de compras
                 CarroCompra carritoCompraSesion = (CarroCompra) session.getAttribute("carritoCompra");
 
-                
                 Pedido pedido = new Pedido();
                 pedido.setIdCliente(idCliente);
                 pedido.setDireccionEnvio(direccion);
                 int idPedido = daoPedido.addPedido(pedido);
 
-                
+                // Detalle de pedido
                 int ld = 1; // Línea de detalle inicializada a 1 para luego ir incrementando
                 for (ProductoCarro productoCarro2 : carritoCompraSesion.getElementos()) {
                     DetallePedido dp = new DetallePedido();
                     dp.setIdPedido(idPedido);
-                    dp.setLineaDetalle(ld); 
+                    dp.setLineaDetalle(ld);
                     dp.setIdProducto(productoCarro2.getIdProducto());
                     dp.setCantidad(productoCarro2.getCantidad());
                     dp.setPrecioUnitario(productoCarro2.getPrecioNormal());
                     dp.setTotalLineaDetalle(productoCarro2.getPrecioNormal() * productoCarro2.getCantidad());
                     DaoDetallePedido daoDetallePedido = new DaoDetallePedido();
                     daoDetallePedido.addDetallePedido(dp);
-                    ld++; 
+                    ld++;
                 }
 
-               
+                
                 request.getRequestDispatcher("pedidoconfirmado.jsp").forward(request, response);
                 break;
+
         }
 		
 		
