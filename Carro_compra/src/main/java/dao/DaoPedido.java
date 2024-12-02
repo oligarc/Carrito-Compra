@@ -38,12 +38,13 @@ public class DaoPedido {
 			
 			ps.close();
 			
-			String query = "INSERT INTO PEDIDO VALUES (S_PEDIDO.NEXTVAL,?,PENDIENTE,S,?,?)";
-			java.sql.Timestamp fechaActual = new java.sql.Timestamp(System.currentTimeMillis());
+			String query = "INSERT INTO PEDIDO (IDPEDIDO, IDCLIENTE, DIRECCIONDEENVIO) VALUES (S_PEDIDO.NEXTVAL, ?, ?)";
+			//Aquí he tenido que quitar tanto la fecha como el pagado, por defecto SQL meterá la sysdate así que bien
+			//java.sql.Timestamp fechaActual = new java.sql.Timestamp(System.currentTimeMillis());
 			ps = con.prepareStatement(query);
 			ps.setInt(1, p.getIdCliente());
-			ps.setTimestamp(2, fechaActual);
-			ps.setString(3, p.getDireccionEnvio());
+			//ps.setTimestamp(2, fechaActual);
+			ps.setString(2, p.getDireccionEnvio());
 			ps.executeUpdate();
 			System.out.println(p.toString());
 			con.commit();

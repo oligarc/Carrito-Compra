@@ -76,9 +76,9 @@
            <td>${productosCarro.precioNormal} </td>
            <td>${productosCarro.cantidad}</td>
            <td>${productosCarro.precioNormal*productosCarro.cantidad}</td>
-           <td><a href=""><img src="img/addCarro.png" /></a></td>
-           <td><a href=""><img src="img/remCarro.png" /></a></td>
-           <td><a href=""><img src="img/delCarro.png" /></a></td>
+           <td><a href="controller?operacion=aniadirProducto&idProducto=${productosCarro.idProducto}"><img src="img/addCarro.png" /></a></td>
+           <td><a href="controller?operacion=quitarProducto&idProducto=${productosCarro.idProducto}"><img src="img/remCarro.png" /></a></td>
+           <td><a href="controller?operacion=eliminarProducto&idProducto=${productosCarro.idProducto}"><img src="img/delCarro.png" /></a></td>
            </tr>
            </c:forEach>
            </tbody>
