@@ -22,7 +22,7 @@ public class DaoCliente {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Cliente cliente = new Cliente();
-		String query = "SELECT ID, NOMBRE, TIPO, LIMITECREDITO FROM CLIENTES WHERE ID = ?";
+		String query = "SELECT ID, NOMBRE, TIPO, LIMITECREDITO FROM CLIENTE WHERE ID = ?";
 		
 		try {
 			con = miconex.getConexion();

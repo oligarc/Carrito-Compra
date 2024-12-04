@@ -69,7 +69,7 @@
     
      <footer class="p-3">
       <div class="container bg-primary">
-        <h1 class="text-white text-center p-2">Made by ajkasajs</h1>
+        <h1 class="text-white text-center p-2">Amansón</h1>
       </div>
     </footer>
     

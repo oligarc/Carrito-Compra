@@ -152,6 +152,7 @@ public class Controller extends HttpServlet {
 
                 
                 Cliente cliente = daoCliente.obtenerClientePorID(idCliente);
+                System.out.println(cliente.getIdCliente());
                 
                 // Verificar si el cliente no existe
                 if(cliente.getIdCliente() == 0) {
@@ -167,6 +168,7 @@ public class Controller extends HttpServlet {
                 pedido.setIdCliente(idCliente);
                 pedido.setDireccionEnvio(direccion);
                 int idPedido = daoPedido.addPedido(pedido);
+                System.out.println("ID del pedido generado: " +idPedido);
 
                 // Detalle de pedido
                 int ld = 1; // Línea de detalle inicializada a 1 para luego ir incrementando
